@@ -1,0 +1,71 @@
+
+test_elf:     file format elf32-littlearm
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	e59f0014 	ldr	r0, [pc, #20]	; 1c <.text+0x1c>
+   4:	e3a01005 	mov	r1, #5	; 0x5
+   8:	e5801000 	str	r1, [r0]
+   c:	e59f000c 	ldr	r0, [pc, #12]	; 20 <.text+0x20>
+  10:	e3a01000 	mov	r1, #0	; 0x0
+  14:	e5801000 	str	r1, [r0]
+
+00000018 <MAIN_LOOP>:
+  18:	eafffffe 	b	18 <MAIN_LOOP>
+  1c:	56000060 	strpl	r0, [r0], -r0, rrx
+  20:	56000064 	strpl	r0, [r0], -r4, rrx
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	0000001c 	andeq	r0, r0, ip, lsl r0
+   4:	00000002 	andeq	r0, r0, r2
+   8:	00040000 	andeq	r0, r4, r0
+	...
+  14:	00000024 	andeq	r0, r0, r4, lsr #32
+	...
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	00000039 	andeq	r0, r0, r9, lsr r0
+   4:	00000002 	andeq	r0, r0, r2
+   8:	01040000 	tsteq	r4, r0
+	...
+  14:	00000024 	andeq	r0, r0, r4, lsr #32
+  18:	74736574 	ldrvcbt	r6, [r3], #-1396
+  1c:	2f00532e 	swics	0x0000532e
+  20:	656d6f68 	strvsb	r6, [sp, #-3944]!
+  24:	6f6f622f 	swivs	0x006f622f
+  28:	61382f6b 	teqvs	r8, fp, ror #30
+  2c:	47006d72 	smlsdxmi	r0, r2, sp, r6
+  30:	4120554e 	teqmi	r0, lr, asr #10
+  34:	2e322053 	mrccs	0, 1, r2, cr2, cr3, {2}
+  38:	01003531 	tsteq	r0, r1, lsr r5
+  3c:	Address 0x3c is out of bounds.
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	10001101 	andne	r1, r0, r1, lsl #2
+   4:	12011106 	andne	r1, r1, #-2147483647	; 0x80000001
+   8:	1b080301 	blne	200c14 <__bss_end__+0x1f8bf0>
+   c:	13082508 	tstne	r8, #33554432	; 0x2000000
+  10:	00000005 	andeq	r0, r0, r5
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	00000033 	andeq	r0, r0, r3, lsr r0
+   4:	001a0002 	andeqs	r0, sl, r2
+   8:	01020000 	tsteq	r2, r0
+   c:	000a0efb 	streqd	r0, [sl], -fp
+  10:	01010101 	tsteq	r1, r1, lsl #2
+  14:	01000000 	tsteq	r0, r0
+  18:	73657400 	cmnvc	r5, #0	; 0x0
+  1c:	00532e74 	subeqs	r2, r3, r4, ror lr
+  20:	00000000 	andeq	r0, r0, r0
+  24:	00020500 	andeq	r0, r2, r0, lsl #10
+  28:	13000000 	tstne	r0, #0	; 0x0
+  2c:	2c2d2c2c 	stccs	12, cr2, [sp], #-176
+  30:	06022e2c 	streq	r2, [r2], -ip, lsr #28
+  34:	Address 0x34 is out of bounds.
+
